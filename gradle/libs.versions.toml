@@ -1,23 +1,18 @@
 [versions]
-minSdk = "24"
-targetSdk = "34"
-compileSdk = "34"
+agp = "8.3.0"
+kotlin = "1.9.0"
 
-agp = "8.1.2"
-kotlin = "1.8.10"
-kotlinCompiler = "1.4.3"
+junit = "4.13.2"
 
 
 
 
 [libraries]
-junit_test = { module = "junit:junit", version = "4.13.2" }
-ext_androidtest = { module = "androidx.test.ext:junit", version = "1.1.5" }
-espresso_androidtest = { module = "androidx.test.espresso:espresso-core", version = "3.5.1" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
 
 
 
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

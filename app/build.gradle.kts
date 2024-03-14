@@ -1,16 +1,16 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.jetbrainsKotlinAndroid)
 }
 
 android {
     namespace = "com.sample.android"
-    compileSdk = libs.versions.compileSdk.get().toInt()
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.sample.android"
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
+        minSdk = 26
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -37,7 +37,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.kotlinCompiler.get()
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
     packaging {
         resources {
@@ -47,18 +47,15 @@ android {
 }
 
 dependencies {
-    implementation(xLibs.bundles.basic)
-
-    implementation(platform(xLibs.compose.bom))
+    val composeBom = platform(xLibs.androidx.compose.bom)
+    implementation(composeBom)
+    implementation(xLibs.bundles.compose.basic)
     implementation(xLibs.bundles.compose.ui)
-    implementation(xLibs.compose.material3)
 
-    testImplementation(libs.junit.test)
-    androidTestImplementation(libs.ext.androidtest)
-    androidTestImplementation(libs.espresso.androidtest)
+    testImplementation(libs.junit)
+    androidTestImplementation(xLibs.bundles.androidTest.junit)
 
-    androidTestImplementation(platform(xLibs.compose.bom))
-    androidTestImplementation(xLibs.compose.ui.androidtest)
-    debugImplementation(xLibs.compose.ui.tooling.debug)
-    debugImplementation(xLibs.compose.ui.test.manifest.debug)
+    androidTestImplementation(composeBom)
+    androidTestImplementation(xLibs.bundles.androidTest.compose)
+    debugImplementation(xLibs.bundles.debug.compose)
 }
