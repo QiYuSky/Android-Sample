@@ -34,6 +34,11 @@ dependencyResolutionManagement {
         create("xLibs") {
             from(files("./gradle/x.versions.toml"))
         }
+
+        //add third lib
+        create("tLibs") {
+            from(files("./gradle/t.versions.toml"))
+        }
     }
 }
 

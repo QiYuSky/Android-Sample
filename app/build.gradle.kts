@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("kapt")
+    alias(tLibs.plugins.hiltAndroid)
 }
 
 android {
@@ -46,11 +48,22 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+//    arguments {
+//        arg("AROUTER_MODULE_NAME", project.getName())
+//    }
+}
+
 dependencies {
     val composeBom = platform(xLibs.androidx.compose.bom)
     implementation(composeBom)
     implementation(xLibs.bundles.compose.basic)
     implementation(xLibs.bundles.compose.ui)
+
+    implementation(tLibs.bundles.retrofit2)
+    implementation(tLibs.hilt.android)
+    kapt(tLibs.hilt.android.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(xLibs.bundles.androidTest.junit)

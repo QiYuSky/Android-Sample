@@ -1,0 +1,27 @@
+[versions]
+retrofit = "2.9.0"
+
+hilt = "2.44"
+
+
+
+
+[libraries]
+retrofit2 = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit2-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+retrofit2-scalars = { group = "com.squareup.retrofit2", name = "converter-scalars", version.ref = "retrofit" }
+retrofit2-adapter = { group = "com.squareup.retrofit2", name = "adapter-rxjava2", version.ref = "retrofit" }
+
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+
+
+
+[plugins]
+hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+
+
+
+[bundles]
+retrofit2 = ["retrofit2", "retrofit2-gson", "retrofit2-scalars", "retrofit2-adapter"]
